@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OptiSqueeze Privacy Policy</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  h1 { font-size: 1.8em; margin-bottom: 0.2em; }
+  h2 { font-size: 1.25em; margin-top: 2em; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3em; }
+  .updated { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+  ul { padding-left: 1.3em; }
+  li { margin-bottom: 0.5em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; }
+  a { color: #1a5fb4; }
+  code { background: #f0f0f0; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
+  footer { margin-top: 3em; color: #888; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy for OptiSqueeze</h1>
+<p class="updated">Effective date: June 23, 2026</p>
+
+<p>
+  OptiSqueeze ("the App", "we", "us") is an Android application that compresses
+  images and PDF files directly on your device. This Privacy Policy explains what
+  information the App accesses, how it is used, and the choices you have.
+</p>
+
+<h2>1. Files you compress are processed on your device</h2>
+<p>
+  OptiSqueeze never uploads the photos, images, or PDF files you choose to compress
+  to any server. All compression (image re-encoding and PDF rasterization/re-embedding)
+  happens locally, in memory and in the app's private cache, using on-device libraries.
+  When you tap "Save," the compressed output is written to the public
+  <code>Downloads/OptiSqueeze</code> folder on your device using Android's MediaStore
+  (or, on Android 9 and below, a direct file write) so you can access it from your
+  Files app. We do not have access to, and do not collect, the content of these files.
+</p>
+
+<h2>2. Information we collect</h2>
+<p>The App does not require you to create an account, sign in, or provide personal
+  information such as your name, email address, or phone number to use its core
+  features. The App does, however, use the following third-party services, which
+  may collect limited technical data automatically:</p>
+
+<table>
+  <tr><th>Service</th><th>Purpose</th><th>Data involved</th></tr>
+  <tr>
+    <td>Google AdMob (native ads)</td>
+    <td>Displays in-app advertisements that support the App's development</td>
+    <td>Advertising ID, IP address/approximate location, device and app info,
+        ad interaction data. See Google's policies linked below.</td>
+  </tr>
+  <tr>
+    <td>Firebase Analytics</td>
+    <td>Understands feature usage and app performance in aggregate</td>
+    <td>App usage events, device/OS info, approximate location (country/region),
+        installation identifier</td>
+  </tr>
+  <tr>
+    <td>Firebase Crashlytics</td>
+    <td>Detects and diagnoses app crashes</td>
+    <td>Crash logs, stack traces, device model, OS version, app version</td>
+  </tr>
+  <tr>
+    <td>Firebase Performance Monitoring</td>
+    <td>Measures app startup time and responsiveness</td>
+    <td>Performance traces, network request timing, device/OS info</td>
+  </tr>
+</table>
+
+<p>
+  None of these services receive the content of your compressed files. They may
+  collect device identifiers and usage statistics as described in their own
+  privacy policies:
+</p>
+<ul>
+  <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+  <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">How Google uses information from sites or apps that use AdMob</a></li>
+  <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a></li>
+</ul>
+
+<h2>3. Permissions the App requests</h2>
+<table>
+  <tr><th>Permission</th><th>Why it's needed</th></tr>
+  <tr><td><code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code></td>
+      <td>Required to load ads and send analytics/crash data to Firebase and AdMob.</td></tr>
+  <tr><td><code>AD_ID</code></td>
+      <td>Lets AdMob use the Android Advertising ID to serve and measure ads.</td></tr>
+  <tr><td><code>WRITE_EXTERNAL_STORAGE</code> (Android 9 / API 28 and below only)</td>
+      <td>Needed on older Android versions to save compressed files to the Downloads
+          folder. Not used on Android 10+, which relies on MediaStore instead.</td></tr>
+</table>
+<p>
+  The App also lets you pick image and PDF files via the system file/photo picker.
+  This does not grant the App broad access to your storage — only the specific
+  files you select are read.
+</p>
+
+<h2>4. Data stored on your device</h2>
+<p>
+  Compression history (file names, sizes, and timestamps of past compressions) and
+  app settings (such as your preferred compression quality) are stored locally on
+  your device using Android's SharedPreferences. This data is not transmitted to
+  us and is removed if you clear the App's data or uninstall it.
+</p>
+
+<h2>5. Data sharing and sale</h2>
+<p>
+  We do not sell your personal information. Data described in Section 2 is shared
+  only with the named service providers (Google AdMob, Firebase) for the purposes
+  stated above, under their own privacy and data-processing terms.
+</p>
+
+<h2>6. Data retention</h2>
+<p>
+  Locally stored history and settings persist until you clear the App's data or
+  uninstall the App. Data collected by Firebase and AdMob is retained according to
+  Google's own retention policies, which you can review at the links in Section 2.
+</p>
+
+<h2>7. Children's privacy</h2>
+<p>
+  OptiSqueeze is not directed at children under 13, and we do not knowingly collect
+  personal information from children. If you believe a child has provided us with
+  personal information, please contact us so we can address it.
+</p>
+
+<h2>8. Your choices</h2>
+<ul>
+  <li>You can opt out of personalized advertising via your device's Google
+      Settings ("Ads" → "Opt out of Ads Personalization") or by resetting your
+      Advertising ID.</li>
+  <li>You can clear the App's locally stored history/settings via Android
+      Settings → Apps → OptiSqueeze → Storage → Clear data.</li>
+  <li>Uninstalling the App removes all locally stored history and settings.</li>
+</ul>
+
+<h2>9. Changes to this policy</h2>
+<p>
+  We may update this Privacy Policy from time to time. Material changes will be
+  reflected by updating the "Effective date" above. Continued use of the App after
+  changes are posted constitutes acceptance of the revised policy.
+</p>
+
+<h2>10. Contact us</h2>
+<p>
+  If you have questions about this Privacy Policy, contact us at
+  <a href="mailto:apollo102102@gmail.com">apollo102102@gmail.com</a>.
+</p>
+
+<footer>
+  OptiSqueeze &mdash; on-device image &amp; PDF compression.
+</footer>
+
+</body>
+</html>
