@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OptiSqueeze — Compress Images &amp; PDFs On-Device</title>
+<meta name="description" content="OptiSqueeze shrinks your photos and PDFs right on your phone — no uploads, no waiting on a server. Pick a quality preset, compress, and save straight to Downloads." />
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-soft: #161922;
+    --card: #1b1f2a;
+    --border: #2a2f3c;
+    --text: #eef0f4;
+    --text-dim: #9aa3b2;
+    --accent: #4f8cff;
+    --accent-soft: #1e2a44;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15em; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav.links a { color: var(--text-dim); margin-left: 24px; font-size: 0.95em; }
+  nav.links a:hover { color: var(--text); }
+
+  .hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 40px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .hero-copy { flex: 1 1 360px; min-width: 300px; }
+  .hero-icon { flex: 0 0 auto; }
+  .hero-icon img {
+    width: 160px;
+    height: 160px;
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  }
+  .eyebrow {
+    display: inline-block;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 2.4em; margin: 0 0 14px; letter-spacing: -0.02em; }
+  .hero-copy p.lede { color: var(--text-dim); font-size: 1.1em; margin: 0 0 28px; max-width: 480px; }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #3d7af0; text-decoration: none; }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); text-decoration: none; }
+
+  section { max-width: 1080px; margin: 0 auto; padding: 40px 24px; }
+  section.alt { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  section h2 { font-size: 1.6em; margin: 0 0 8px; }
+  section .section-sub { color: var(--text-dim); margin: 0 0 32px; max-width: 600px; }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .card .icon { font-size: 1.6em; margin-bottom: 10px; }
+  .card h3 { margin: 0 0 8px; font-size: 1.05em; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 0.92em; }
+
+  .steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .step { position: relative; padding-left: 44px; }
+  .step .num {
+    position: absolute;
+    left: 0; top: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+  }
+  .step h3 { margin: 0 0 6px; font-size: 1em; }
+  .step p { margin: 0; color: var(--text-dim); font-size: 0.92em; }
+
+  .presets { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .preset { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .preset h3 { margin: 0 0 6px; font-size: 1.05em; }
+  .preset p { margin: 0; color: var(--text-dim); font-size: 0.9em; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 24px 40px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.88em;
+  }
+  footer a { margin: 0 8px; }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 1.9em; }
+    .hero { flex-direction: column-reverse; text-align: center; }
+    .hero-copy p.lede { margin-inline: auto; }
+    .cta-row { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <img src="./playstore-icon.png" alt="OptiSqueeze icon" />
+    OptiSqueeze
+  </div>
+  <nav class="links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="privacy-policy.html">Privacy</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">FOR ANDROID</span>
+    <h1>Shrink photos and PDFs without leaving your phone.</h1>
+    <p class="lede">
+      OptiSqueeze compresses images and PDF files entirely on-device — pick a
+      quality preset, squeeze, and save straight to your Downloads folder.
+      No uploads, no accounts, no waiting on a server.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#how-it-works">See how it works</a>
+      <a class="btn btn-ghost" href="privacy-policy.html">Privacy policy</a>
+    </div>
+  </div>
+  <div class="hero-icon">
+    <img src="./playstore-icon.png" alt="OptiSqueeze app icon" />
+  </div>
+</div>
+
+<section id="features">
+  <h2>Why OptiSqueeze</h2>
+  <p class="section-sub">Built to make files smaller without making you think about it.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h3>100% on-device</h3>
+      <p>Your files are never uploaded anywhere. Compression happens locally in the app's own cache.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🖼️</div>
+      <h3>Images &amp; PDFs</h3>
+      <p>Compress photos and PDF documents from the same simple flow — pick files, squeeze, save.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎛️</div>
+      <h3>Quality presets</h3>
+      <p>Choose Maximum, Balanced, or Lossless and let OptiSqueeze pick the right settings for you.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📂</div>
+      <h3>Saves to Downloads</h3>
+      <p>Compressed files land in <code>Downloads/OptiSqueeze</code>, ready to share or file away.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📉</div>
+      <h3>Never larger, guaranteed</h3>
+      <p>If a recompressed file would end up bigger than the original, OptiSqueeze keeps the original instead.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🕓</div>
+      <h3>Compression history</h3>
+      <p>See what you compressed, when, and how much space you saved — all stored locally on your device.</p>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="alt">
+  <h2>How it works</h2>
+  <p class="section-sub">Three steps, no sign-up.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Pick your files</h3>
+      <p>Select one or more photos or PDFs from your device.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Choose a quality preset</h3>
+      <p>Maximum for the smallest size, Balanced for everyday use, or Lossless when quality matters most.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Squeeze &amp; save</h3>
+      <p>OptiSqueeze compresses each file on-device and saves the result to <code>Downloads/OptiSqueeze</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Quality presets</h2>
+  <p class="section-sub">One knob, tuned for different needs.</p>
+  <div class="presets">
+    <div class="preset">
+      <h3>Maximum</h3>
+      <p>Smallest possible file size. Best when storage or upload limits matter more than fine detail.</p>
+    </div>
+    <div class="preset">
+      <h3>Balanced</h3>
+      <p>The default — a solid size reduction while keeping images and documents looking sharp.</p>
+    </div>
+    <div class="preset">
+      <h3>Lossless</h3>
+      <p>Trims file size with no visible quality loss, for when the original look has to stay intact.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>OptiSqueeze — on-device image &amp; PDF compression for Android.</div>
+  <div style="margin-top: 10px;">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:apollo102102@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
